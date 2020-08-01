@@ -13,4 +13,10 @@ public class Prompt {
     public void printWelcomeMessage() {
         this.printStream.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
     }
+
+    public void listAllBooks() {
+        this.printStream.println("1. Fundamentals of Software Architecture");
+        this.printStream.println("2. EDGE: Value-driven digital transformation");
+        this.printStream.println("3. Digital Transformation Game Plan");
+    }
 }
