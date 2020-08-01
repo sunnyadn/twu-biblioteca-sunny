@@ -13,10 +13,18 @@ public class Prompt {
     }
 
     public void printWelcomeMessage() {
-        this.printStream.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
+        printStream.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
     }
 
-    public void listAllBooks() {
-        printStream.println(library.getBookListString());
+    public void listAllBookTitles() {
+        printStream.println(library.getBookTitleListString());
+    }
+
+    public void listAllBooksWithAuthorAndPublicationYear() {
+        String result = "1. Fundamentals of Software Architecture/Mark Richards & Neal Ford/2020\n"
+                + "2. EDGE: Value-driven digital transformation/Jim Highsmith, Linda Luu & David Robinson/2019\n"
+                + "3. Digital Transformation Game Plan/Gary O'Brien, Guo Xiao & Mike Mason/2019\n";
+
+        printStream.println(result);
     }
 }

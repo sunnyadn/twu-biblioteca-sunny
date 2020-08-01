@@ -9,7 +9,7 @@ public class Library {
     };
 
 
-    public String getBookListString() {
+    public String getBookTitleListString() {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < books.length; i++) {
             result.append(i + 1).append(". ").append(books[i]).append("\n");
