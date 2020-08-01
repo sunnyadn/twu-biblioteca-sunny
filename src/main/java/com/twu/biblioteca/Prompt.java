@@ -11,7 +11,7 @@ public class Prompt {
 
     private InputStream inputStream = System.in;
 
-    private final Library library;
+    private final Library library = new Library();
 
     // For Test Purpose
     public void setInputStream(InputStream inputStream) {
@@ -20,7 +20,6 @@ public class Prompt {
 
     public Prompt(PrintStream printStream) {
         this.printStream = printStream;
-        library = new Library();
     }
 
     public void printWelcomeMessage() {
