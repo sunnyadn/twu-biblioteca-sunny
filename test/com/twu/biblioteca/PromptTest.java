@@ -74,7 +74,7 @@ public class PromptTest {
     }
 
     @Test
-    public void shouldListAllBooksWhenOptionSelected() {
+    public void shouldListAllBooksWhenInput1() {
         // Arrange
         when(inputScanner.nextInt()).thenReturn(1);
         // Action
