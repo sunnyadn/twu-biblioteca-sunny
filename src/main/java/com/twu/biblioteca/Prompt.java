@@ -1,16 +1,25 @@
 package com.twu.biblioteca;
 
+import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class Prompt {
 
     private final PrintStream printStream;
-    private final StubableScanner inputScanner;
+
+    private InputStream inputStream = System.in;
+
     private final Library library;
 
-    public Prompt(PrintStream printStream, StubableScanner inputScanner) {
+    // For Test Purpose
+    public void setInputStream(InputStream inputStream) {
+        this.inputStream = inputStream;
+    }
+
+    public Prompt(PrintStream printStream) {
         this.printStream = printStream;
-        this.inputScanner = inputScanner;
         library = new Library();
     }
 
@@ -42,10 +51,14 @@ public class Prompt {
     }
 
     public void askForOption() {
-        int option = inputScanner.nextInt();
-        if (option == 1) {
-            listAllBooksWithAuthorAndPublicationYear();
-        } else {
+        try (Scanner scanner = new Scanner(inputStream)) {
+            int option = scanner.nextInt();
+            if (option == 1) {
+                listAllBooksWithAuthorAndPublicationYear();
+            } else {
+                printStream.println("Error: Not a Option Number!");
+            }
+        } catch (InputMismatchException e) {
             printStream.println("Error: Not a Option Number!");
         }
     }

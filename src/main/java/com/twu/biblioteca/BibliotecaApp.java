@@ -1,13 +1,11 @@
 package com.twu.biblioteca;
 
-import java.util.Scanner;
-
 public class BibliotecaApp {
 
     public static void main(String[] args) {
-        StubableScanner inputScanner = new StubableScanner(new Scanner(System.in));
-        Prompt prompt = new Prompt(System.out, inputScanner);
+        Prompt prompt = new Prompt(System.out);
         prompt.printWelcomeMessage();
         prompt.showMainMenu();
+        prompt.askForOption();
     }
 }

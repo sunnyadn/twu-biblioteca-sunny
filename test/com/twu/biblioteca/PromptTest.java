@@ -6,10 +6,10 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.io.ByteArrayInputStream;
 import java.io.PrintStream;
 
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PromptTest {
@@ -17,14 +17,11 @@ public class PromptTest {
     @Mock
     PrintStream printStream;
 
-    @Mock
-    StubableScanner inputScanner;
-
     private Prompt prompt;
 
     @Before
     public void setUp() {
-        prompt = new Prompt(printStream, inputScanner);
+        prompt = new Prompt(printStream);
     }
 
     @Test
@@ -76,7 +73,7 @@ public class PromptTest {
     @Test
     public void shouldListAllBooksWhenInput1() {
         // Arrange
-        when(inputScanner.nextInt()).thenReturn(1);
+        prompt.setInputStream(new ByteArrayInputStream("1".getBytes()));
         // Action
         prompt.askForOption();
         // Assert
@@ -89,7 +86,17 @@ public class PromptTest {
     @Test
     public void shouldShowErrorWhenInputIncorrectNumber() {
         // Arrange
-        when(inputScanner.nextInt()).thenReturn(2);
+        prompt.setInputStream(new ByteArrayInputStream("2".getBytes()));
+        // Action
+        prompt.askForOption();
+        // Assert
+        verify(printStream).println("Error: Not a Option Number!");
+    }
+
+    @Test
+    public void shouldShowErrorWhenInputNotAInteger() {
+        // Arrange
+        prompt.setInputStream(new ByteArrayInputStream("str".getBytes()));
         // Action
         prompt.askForOption();
         // Assert
