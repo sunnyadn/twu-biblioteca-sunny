@@ -9,6 +9,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.io.PrintStream;
 
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PromptTest {
@@ -16,11 +17,14 @@ public class PromptTest {
     @Mock
     PrintStream printStream;
 
+    @Mock
+    StubableScanner inputScanner;
+
     private Prompt prompt;
 
     @Before
     public void setUp() {
-        prompt = new Prompt(printStream);
+        prompt = new Prompt(printStream, inputScanner);
     }
 
     @Test
@@ -67,5 +71,18 @@ public class PromptTest {
         // Assert
         verify(printStream).println("\n1. List of books\n");
         verify(printStream).println("Please Enter Your Option Number to Continue:");
+    }
+
+    @Test
+    public void shouldListAllBooksWhenOptionSelected() {
+        // Arrange
+        when(inputScanner.nextInt()).thenReturn(1);
+        // Action
+        prompt.askForOption();
+        // Assert
+        verify(printStream).println("1. Fundamentals of Software Architecture/Mark Richards & Neal Ford/2020");
+        verify(printStream).println("2. EDGE: Value-driven digital transformation/"
+                + "Jim Highsmith, Linda Luu & David Robinson/2019");
+        verify(printStream).println("3. Digital Transformation Game Plan/Gary O'Brien, Guo Xiao & Mike Mason/2019");
     }
 }

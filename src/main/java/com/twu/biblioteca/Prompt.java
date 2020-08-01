@@ -5,10 +5,12 @@ import java.io.PrintStream;
 public class Prompt {
 
     private final PrintStream printStream;
+    private final StubableScanner inputScanner;
     private final Library library;
 
-    public Prompt(PrintStream printStream) {
+    public Prompt(PrintStream printStream, StubableScanner inputScanner) {
         this.printStream = printStream;
+        this.inputScanner = inputScanner;
         library = new Library();
     }
 
@@ -37,5 +39,10 @@ public class Prompt {
     public void showMainMenu() {
         printStream.println("\n1. List of books\n");
         printStream.println("Please Enter Your Option Number to Continue:");
+    }
+
+    public void askForOption() {
+        inputScanner.nextInt();
+        listAllBooksWithAuthorAndPublicationYear();
     }
 }
