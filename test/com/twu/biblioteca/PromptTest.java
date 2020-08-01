@@ -57,4 +57,15 @@ public class PromptTest {
                 + "Jim Highsmith, Linda Luu & David Robinson/2019");
         verify(printStream).println("3. Digital Transformation Game Plan/Gary O'Brien, Guo Xiao & Mike Mason/2019");
     }
+
+    @Test
+    public void shouldShowMainMenu() {
+        // Arrange
+
+        // Action
+        prompt.showMainMenu();
+        // Assert
+        verify(printStream).println("\n1. List of books\n");
+        verify(printStream).println("Please Enter Your Option Number to Continue:");
+    }
 }

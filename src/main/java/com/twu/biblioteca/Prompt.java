@@ -33,4 +33,9 @@ public class Prompt {
                     + "/" + book.getAuthor() + "/" + book.getPublicationYear());
         }
     }
+
+    public void showMainMenu() {
+        printStream.println("\n1. List of books\n");
+        printStream.println("Please Enter Your Option Number to Continue:");
+    }
 }
