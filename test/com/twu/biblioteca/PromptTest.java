@@ -1,19 +1,32 @@
 package com.twu.biblioteca;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.io.PrintStream;
 
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
+@RunWith(MockitoJUnitRunner.class)
 public class PromptTest {
+
+    @Mock
+    PrintStream printStream;
+
+    private Prompt prompt;
+
+    @Before
+    public void setUp() {
+        prompt = new Prompt(printStream);
+    }
 
     @Test
     public void shouldPrintWelcomeMessage() {
         // Arrange
-        PrintStream printStream = mock(PrintStream.class);
-        Prompt prompt = new Prompt(printStream);
+
         // Action
         prompt.printWelcomeMessage();
         // Assert
@@ -23,8 +36,7 @@ public class PromptTest {
     @Test
     public void shouldListAllBooks() {
         // Arrange
-        PrintStream printStream = mock(PrintStream.class);
-        Prompt prompt = new Prompt(printStream);
+
         // Action
         prompt.listAllBooks();
         // Assert
