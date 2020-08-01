@@ -90,16 +90,16 @@ public class PromptTest {
         // Action
         prompt.askForOption();
         // Assert
-        verify(printStream).println("Error: Not a Option Number!");
+        verify(printStream).println("Error: Not an Option Number!");
     }
 
     @Test
-    public void shouldShowErrorWhenInputNotAInteger() {
+    public void shouldShowErrorWhenInputNotAnInteger() {
         // Arrange
         prompt.setInputStream(new ByteArrayInputStream("str".getBytes()));
         // Action
         prompt.askForOption();
         // Assert
-        verify(printStream).println("Error: Not a Option Number!");
+        verify(printStream).println("Error: Not an Option Number!");
     }
 }

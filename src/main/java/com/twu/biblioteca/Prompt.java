@@ -56,10 +56,10 @@ public class Prompt {
             if (option == 1) {
                 listAllBooksWithAuthorAndPublicationYear();
             } else {
-                printStream.println("Error: Not a Option Number!");
+                printStream.println("Error: Not an Option Number!");
             }
         } catch (InputMismatchException e) {
-            printStream.println("Error: Not a Option Number!");
+            printStream.println("Error: Not an Option Number!");
         }
     }
 }
