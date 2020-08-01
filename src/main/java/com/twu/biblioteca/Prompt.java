@@ -42,7 +42,11 @@ public class Prompt {
     }
 
     public void askForOption() {
-        inputScanner.nextInt();
-        listAllBooksWithAuthorAndPublicationYear();
+        int option = inputScanner.nextInt();
+        if (option == 1) {
+            listAllBooksWithAuthorAndPublicationYear();
+        } else {
+            printStream.println("Error: Not a Option Number!");
+        }
     }
 }

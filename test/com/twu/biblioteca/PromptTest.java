@@ -85,4 +85,14 @@ public class PromptTest {
                 + "Jim Highsmith, Linda Luu & David Robinson/2019");
         verify(printStream).println("3. Digital Transformation Game Plan/Gary O'Brien, Guo Xiao & Mike Mason/2019");
     }
+
+    @Test
+    public void shouldShowErrorWhenInputIncorrectNumber() {
+        // Arrange
+        when(inputScanner.nextInt()).thenReturn(2);
+        // Action
+        prompt.askForOption();
+        // Assert
+        verify(printStream).println("Error: Not a Option Number!");
+    }
 }
