@@ -17,7 +17,11 @@ public class Prompt {
     }
 
     public void listAllBookTitles() {
-        printStream.println(library.getBookTitleListString());
+        Book[] books = library.getBooks();
+
+        for (int i = 0; i < books.length; i++) {
+            printStream.println((i + 1) + ". " + books[i].getTitle());
+        }
     }
 
     public void listAllBooksWithAuthorAndPublicationYear() {

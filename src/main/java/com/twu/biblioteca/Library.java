@@ -2,19 +2,16 @@ package com.twu.biblioteca;
 
 public class Library {
 
-    private final String[] books = {
-            "Fundamentals of Software Architecture",
-            "EDGE: Value-driven digital transformation",
-            "Digital Transformation Game Plan"
+    private final Book[] books = {
+            new Book("Fundamentals of Software Architecture", "Mark Richards & Neal Ford",
+                    2020),
+            new Book("EDGE: Value-driven digital transformation",
+                    "Jim Highsmith, Linda Luu & David Robinson", 2019),
+            new Book("Digital Transformation Game Plan", "Gary O'Brien, Guo Xiao & Mike Mason",
+                    2019)
     };
 
-
-    public String getBookTitleListString() {
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < books.length; i++) {
-            result.append(i + 1).append(". ").append(books[i]).append("\n");
-        }
-
-        return result.toString();
+    public Book[] getBooks() {
+        return books;
     }
 }
