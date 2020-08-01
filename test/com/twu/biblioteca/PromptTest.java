@@ -40,8 +40,6 @@ public class PromptTest {
         // Action
         prompt.listAllBooks();
         // Assert
-        verify(printStream).println("1. Fundamentals of Software Architecture");
-        verify(printStream).println("2. EDGE: Value-driven digital transformation");
-        verify(printStream).println("3. Digital Transformation Game Plan");
+        verify(printStream).println("1. Fundamentals of Software Architecture\n2. EDGE: Value-driven digital transformation\n3. Digital Transformation Game Plan\n");
     }
 }

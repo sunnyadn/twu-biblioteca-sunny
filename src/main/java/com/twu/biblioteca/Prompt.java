@@ -5,9 +5,11 @@ import java.io.PrintStream;
 public class Prompt {
 
     private final PrintStream printStream;
+    private final Library library;
 
     public Prompt(PrintStream printStream) {
         this.printStream = printStream;
+        library = new Library();
     }
 
     public void printWelcomeMessage() {
@@ -15,8 +17,6 @@ public class Prompt {
     }
 
     public void listAllBooks() {
-        this.printStream.println("1. Fundamentals of Software Architecture");
-        this.printStream.println("2. EDGE: Value-driven digital transformation");
-        this.printStream.println("3. Digital Transformation Game Plan");
+        printStream.println(library.getBookListString());
     }
 }
