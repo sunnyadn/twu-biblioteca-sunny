@@ -25,9 +25,12 @@ public class Prompt {
     }
 
     public void listAllBooksWithAuthorAndPublicationYear() {
-        printStream.println("1. Fundamentals of Software Architecture/Mark Richards & Neal Ford/2020");
-        printStream.println("2. EDGE: Value-driven digital transformation"
-                + "/Jim Highsmith, Linda Luu & David Robinson/2019");
-        printStream.println("3. Digital Transformation Game Plan/Gary O'Brien, Guo Xiao & Mike Mason/2019");
+        Book[] books = library.getBooks();
+
+        for (int i = 0; i < books.length; i++) {
+            Book book = books[i];
+            printStream.println((i + 1) + ". " + book.getTitle()
+                    + "/" + book.getAuthor() + "/" + book.getPublicationYear());
+        }
     }
 }
