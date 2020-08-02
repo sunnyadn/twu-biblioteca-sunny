@@ -92,7 +92,7 @@ public class PromptTest {
         // Action
         prompt.askForOption();
         // Assert
-        verify(printStream).println("Error: Not an Option Number!");
+        verify(printStream).println("Please select a valid option!");
     }
 
     @Test
@@ -102,7 +102,7 @@ public class PromptTest {
         // Action
         prompt.askForOption();
         // Assert
-        verify(printStream).println("Error: Not an Option Number!");
+        verify(printStream).println("Please select a valid option!");
     }
 
     @Test

@@ -60,7 +60,7 @@ public class Prompt {
         try {
             option = scanner.nextInt();
         } catch (InputMismatchException e) {
-            printStream.println("Error: Not an Option Number!");
+            printStream.println("Please select a valid option!");
             discardInputBuffer();
             return true;
         }
@@ -68,7 +68,7 @@ public class Prompt {
         if (option == 1) {
             listAllBooksWithAuthorAndPublicationYear();
         } else {
-            printStream.println("Error: Not an Option Number!");
+            printStream.println("Please select a valid option!");
         }
         return true;
     }
