@@ -91,7 +91,7 @@ public class PromptTest {
     @Test
     public void shouldShowErrorWhenInputIncorrectNumber() {
         // Arrange
-        prompt.setInputStream(new ByteArrayInputStream("2".getBytes()));
+        prompt.setInputStream(new ByteArrayInputStream("10".getBytes()));
         // Action
         prompt.askForOption();
         // Assert
