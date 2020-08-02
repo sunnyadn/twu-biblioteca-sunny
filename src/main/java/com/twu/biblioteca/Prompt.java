@@ -12,6 +12,7 @@ public class Prompt {
     private final Library library = new Library();
     private InputStream inputStream = System.in;
     private Scanner scanner = new Scanner(inputStream);
+
     public Prompt(PrintStream printStream) {
         this.printStream = printStream;
     }
@@ -98,11 +99,21 @@ public class Prompt {
             listAllBooksWithAuthorAndPublicationYear();
         } else if (option == 2) {
             checkOutBook();
+        } else if (option == 3) {
+            returnBook();
         } else if (option == 0) {
             return false;
         } else {
             printStream.println(PROMPT_FOR_INVALID_INPUT);
         }
         return true;
+    }
+
+    private void returnBook() {
+        printStream.println("Please enter book title:");
+        discardInputBuffer();
+        String title = scanner.nextLine();
+
+        library.returnBook(title);
     }
 }
