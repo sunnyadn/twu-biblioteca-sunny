@@ -68,7 +68,8 @@ public class PromptTest {
         // Action
         prompt.showMainMenu();
         // Assert
-        verify(printStream).println("\n1. List of books\n");
+        verify(printStream).println("\n1. List of books");
+        verify(printStream).println("0. Exit program\n");
         verify(printStream).println("Please Enter Your Option Number to Continue:");
     }
 
