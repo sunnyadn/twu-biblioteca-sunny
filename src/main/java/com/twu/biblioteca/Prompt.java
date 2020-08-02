@@ -7,21 +7,20 @@ import java.util.Scanner;
 
 public class Prompt {
 
+    final String PROMPT_FOR_INVALID_INPUT = "Please select a valid option!";
     private final PrintStream printStream;
-
+    private final Library library = new Library();
     private InputStream inputStream = System.in;
     private Scanner scanner = new Scanner(inputStream);
 
-    private final Library library = new Library();
+    public Prompt(PrintStream printStream) {
+        this.printStream = printStream;
+    }
 
     // For Test Purpose
     public void setInputStream(InputStream inputStream) {
         this.inputStream = inputStream;
         scanner = new Scanner(inputStream);
-    }
-
-    public Prompt(PrintStream printStream) {
-        this.printStream = printStream;
     }
 
     public void printWelcomeMessage() {
@@ -56,8 +55,7 @@ public class Prompt {
         scanner = new Scanner(inputStream);
     }
 
-    public boolean askForOption() {
-        final String PROMPT_FOR_INVALID_INPUT = "Please select a valid option!";
+    private int readOption() {
         int option;
 
         try {
@@ -65,6 +63,17 @@ public class Prompt {
         } catch (InputMismatchException e) {
             printStream.println(PROMPT_FOR_INVALID_INPUT);
             discardInputBuffer();
+            throw new InputMismatchException();
+        }
+
+        return option;
+    }
+
+    public boolean askForOption() {
+        int option;
+        try {
+            option = readOption();
+        } catch (InputMismatchException e) {
             return true;
         }
 
