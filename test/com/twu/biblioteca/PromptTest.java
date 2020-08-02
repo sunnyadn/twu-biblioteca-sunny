@@ -187,4 +187,16 @@ public class PromptTest {
         verify(printStream).println("Please enter book title:");
         verify(printStream).println("Thank you for returning the book");
     }
+
+    @Test
+    public void shouldShowFailureWhenReturnNonExistBook() {
+        // Arrange
+        Prompt prompt = new Prompt(printStream);
+        prompt.setInputStream(new ByteArrayInputStream("A Non-existing Book".getBytes()));
+        // Action
+        prompt.returnBook();
+        // Assert
+        verify(printStream).println("Please enter book title:");
+        verify(printStream).println("This is not a valid book to return.");
+    }
 }

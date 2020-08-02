@@ -118,6 +118,8 @@ public class Prompt {
 
         if (library.returnBook(title)) {
             printStream.println("Thank you for returning the book");
+        } else {
+            printStream.println("This is not a valid book to return.");
         }
     }
 }
