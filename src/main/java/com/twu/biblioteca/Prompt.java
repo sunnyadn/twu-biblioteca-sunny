@@ -113,9 +113,11 @@ public class Prompt {
         return scanner.nextLine();
     }
 
-    private void returnBook() {
+    public void returnBook() {
         String title = askForBookTitle();
 
-        library.returnBook(title);
+        if (library.returnBook(title)) {
+            printStream.println("Thank you for returning the book");
+        }
     }
 }

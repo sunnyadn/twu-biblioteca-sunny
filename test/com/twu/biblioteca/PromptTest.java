@@ -175,4 +175,16 @@ public class PromptTest {
         verify(printStream).println("Please enter book title:");
         verify(printStream).println("Sorry, that book is not available");
     }
+
+    @Test
+    public void shouldShowSuccessWhenReturnBook() {
+        // Arrange
+        Prompt prompt = new Prompt(printStream);
+        prompt.setInputStream(new ByteArrayInputStream("Fundamentals of Software Architecture".getBytes()));
+        // Action
+        prompt.returnBook();
+        // Assert
+        verify(printStream).println("Please enter book title:");
+        verify(printStream).println("Thank you for returning the book");
+    }
 }
