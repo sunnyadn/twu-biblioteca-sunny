@@ -77,6 +77,8 @@ public class Prompt {
 
         if (library.checkOutBook(title)) {
             printStream.println("Thank you! Enjoy the book");
+        } else {
+            printStream.println("Sorry, that book is not available");
         }
     }
 

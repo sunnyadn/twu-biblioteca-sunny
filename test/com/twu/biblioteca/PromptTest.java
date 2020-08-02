@@ -149,4 +149,16 @@ public class PromptTest {
         verify(printStream).println("Please enter book title:");
         verify(printStream).println("Thank you! Enjoy the book");
     }
+
+    @Test
+    public void shouldShowFailureWhenCheckoutNonExistBook() {
+        // Arrange
+        Prompt prompt = new Prompt(printStream);
+        prompt.setInputStream(new ByteArrayInputStream("A Non-existing Book".getBytes()));
+        // Action
+        prompt.checkOutBook();
+        // Assert
+        verify(printStream).println("Please enter book title:");
+        verify(printStream).println("Sorry, that book is not available");
+    }
 }
