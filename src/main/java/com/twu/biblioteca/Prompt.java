@@ -10,12 +10,14 @@ public class Prompt {
     private final PrintStream printStream;
 
     private InputStream inputStream = System.in;
+    private Scanner scanner = new Scanner(inputStream);
 
     private final Library library = new Library();
 
     // For Test Purpose
     public void setInputStream(InputStream inputStream) {
         this.inputStream = inputStream;
+        scanner = new Scanner(inputStream);
     }
 
     public Prompt(PrintStream printStream) {
@@ -49,16 +51,20 @@ public class Prompt {
         printStream.println("Please Enter Your Option Number to Continue:");
     }
 
-    public void askForOption() {
-        try (Scanner scanner = new Scanner(inputStream)) {
-            int option = scanner.nextInt();
-            if (option == 1) {
-                listAllBooksWithAuthorAndPublicationYear();
-            } else {
-                printStream.println("Error: Not an Option Number!");
-            }
+    public boolean askForOption() {
+        int option;
+        try {
+            option = scanner.nextInt();
         } catch (InputMismatchException e) {
             printStream.println("Error: Not an Option Number!");
+            return true;
         }
+
+        if (option == 1) {
+            listAllBooksWithAuthorAndPublicationYear();
+        } else {
+            printStream.println("Error: Not an Option Number!");
+        }
+        return true;
     }
 }
