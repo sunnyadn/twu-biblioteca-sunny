@@ -51,12 +51,17 @@ public class Prompt {
         printStream.println("Please Enter Your Option Number to Continue:");
     }
 
+    private void discardInputBuffer() {
+        scanner = new Scanner(inputStream);
+    }
+
     public boolean askForOption() {
         int option;
         try {
             option = scanner.nextInt();
         } catch (InputMismatchException e) {
             printStream.println("Error: Not an Option Number!");
+            discardInputBuffer();
             return true;
         }
 

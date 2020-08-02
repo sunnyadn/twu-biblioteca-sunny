@@ -9,6 +9,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.io.ByteArrayInputStream;
 import java.io.PrintStream;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -101,5 +103,15 @@ public class PromptTest {
         prompt.askForOption();
         // Assert
         verify(printStream).println("Error: Not an Option Number!");
+    }
+
+    @Test
+    public void shouldNotQuitWhenInputValidOption() {
+        // Arrange
+        prompt.setInputStream(new ByteArrayInputStream("1".getBytes()));
+        // Action
+        boolean unfinished = prompt.askForOption();
+        // Assert
+        assertThat(unfinished, is(true));
     }
 }
