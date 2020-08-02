@@ -114,4 +114,14 @@ public class PromptTest {
         // Assert
         assertThat(unfinished, is(true));
     }
+
+    @Test
+    public void shouldNotQuitWhenInputInvalidOption() {
+        // Arrange
+        prompt.setInputStream(new ByteArrayInputStream("invalid".getBytes()));
+        // Action
+        boolean unfinished = prompt.askForOption();
+        // Assert
+        assertThat(unfinished, is(true));
+    }
 }
