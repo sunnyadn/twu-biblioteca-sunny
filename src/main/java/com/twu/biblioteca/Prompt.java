@@ -28,7 +28,7 @@ public class Prompt {
     }
 
     public void listAllBookTitles() {
-        Book[] books = library.getBooks();
+        Book[] books = library.getAvailableBooks();
 
         for (int i = 0; i < books.length; i++) {
             printStream.println((i + 1) + ". " + books[i].getTitle());
@@ -36,7 +36,7 @@ public class Prompt {
     }
 
     public void listAllBooksWithAuthorAndPublicationYear() {
-        Book[] books = library.getBooks();
+        Book[] books = library.getAvailableBooks();
 
         for (int i = 0; i < books.length; i++) {
             Book book = books[i];
@@ -70,6 +70,14 @@ public class Prompt {
         return option;
     }
 
+    private void checkOutBook() {
+        printStream.println("Please enter book title:");
+        discardInputBuffer();
+        String title = scanner.nextLine();
+
+        library.checkOutBook(title);
+    }
+
     public boolean askForOption() {
         int option;
         try {
@@ -80,6 +88,8 @@ public class Prompt {
 
         if (option == 1) {
             listAllBooksWithAuthorAndPublicationYear();
+        } else if (option == 2) {
+            checkOutBook();
         } else if (option == 0) {
             return false;
         } else {

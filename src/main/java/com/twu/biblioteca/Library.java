@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import java.util.Arrays;
+
 public class Library {
 
     private final Book[] books = {
@@ -36,5 +38,11 @@ public class Library {
         }
 
         return null;
+    }
+
+    public Book[] getAvailableBooks() {
+        return Arrays.stream(books)
+                .filter(Book::isAvailable)
+                .toArray(Book[]::new);
     }
 }
