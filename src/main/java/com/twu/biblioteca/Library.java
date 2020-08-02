@@ -54,8 +54,12 @@ public class Library {
         for (Book book :
                 books) {
             if (book.getTitle().equals(bookTitle)) {
-                book.setAvailable(true);
-                return true;
+                if (!book.isAvailable()) {
+                    book.setAvailable(true);
+                    return true;
+                } else {
+                    return false;
+                }
             }
         }
 

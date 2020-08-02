@@ -180,6 +180,7 @@ public class PromptTest {
     public void shouldShowSuccessWhenReturnBook() {
         // Arrange
         Prompt prompt = new Prompt(printStream);
+        prompt.getLibrary().checkOutBook("Fundamentals of Software Architecture");
         prompt.setInputStream(new ByteArrayInputStream("Fundamentals of Software Architecture".getBytes()));
         // Action
         prompt.returnBook();
@@ -193,6 +194,18 @@ public class PromptTest {
         // Arrange
         Prompt prompt = new Prompt(printStream);
         prompt.setInputStream(new ByteArrayInputStream("A Non-existing Book".getBytes()));
+        // Action
+        prompt.returnBook();
+        // Assert
+        verify(printStream).println("Please enter book title:");
+        verify(printStream).println("This is not a valid book to return.");
+    }
+
+    @Test
+    public void shouldShowFailureWhenReturnAvailableBook() {
+        // Arrange
+        Prompt prompt = new Prompt(printStream);
+        prompt.setInputStream(new ByteArrayInputStream("Fundamentals of Software Architecture".getBytes()));
         // Action
         prompt.returnBook();
         // Assert
