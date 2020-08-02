@@ -161,4 +161,17 @@ public class PromptTest {
         verify(printStream).println("Please enter book title:");
         verify(printStream).println("Sorry, that book is not available");
     }
+
+    @Test
+    public void shouldShowFailureWhenCheckoutUnavailableBook() {
+        // Arrange
+        Prompt prompt = new Prompt(printStream);
+        prompt.getLibrary().checkOutBook("Fundamentals of Software Architecture");
+        prompt.setInputStream(new ByteArrayInputStream("Fundamentals of Software Architecture".getBytes()));
+        // Action
+        prompt.checkOutBook();
+        // Assert
+        verify(printStream).println("Please enter book title:");
+        verify(printStream).println("Sorry, that book is not available");
+    }
 }

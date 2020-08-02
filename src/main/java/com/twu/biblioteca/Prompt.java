@@ -12,9 +12,12 @@ public class Prompt {
     private final Library library = new Library();
     private InputStream inputStream = System.in;
     private Scanner scanner = new Scanner(inputStream);
-
     public Prompt(PrintStream printStream) {
         this.printStream = printStream;
+    }
+
+    public Library getLibrary() {
+        return library;
     }
 
     // For Test Purpose
