@@ -76,9 +76,7 @@ public class Prompt {
     }
 
     public void checkOutBook() {
-        printStream.println("Please enter book title:");
-        discardInputBuffer();
-        String title = scanner.nextLine();
+        String title = askForBookTitle();
 
         if (library.checkOutBook(title)) {
             printStream.println("Thank you! Enjoy the book");
@@ -109,10 +107,14 @@ public class Prompt {
         return true;
     }
 
-    private void returnBook() {
+    private String askForBookTitle() {
         printStream.println("Please enter book title:");
         discardInputBuffer();
-        String title = scanner.nextLine();
+        return scanner.nextLine();
+    }
+
+    private void returnBook() {
+        String title = askForBookTitle();
 
         library.returnBook(title);
     }
