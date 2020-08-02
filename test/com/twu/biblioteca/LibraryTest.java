@@ -38,4 +38,14 @@ public class LibraryTest {
         // Assert
         assertThat(success, is(true));
     }
+
+    @Test
+    public void shouldReturnBookWhenReturnBookDoesNotExist() {
+        // Arrange
+        Library library = new Library();
+        // Action
+        boolean success = library.returnBook("A Non-existing Book");
+        // Assert
+        assertThat(success, is(false));
+    }
 }
