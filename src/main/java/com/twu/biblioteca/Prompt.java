@@ -56,11 +56,13 @@ public class Prompt {
     }
 
     public boolean askForOption() {
+        final String PROMPT_FOR_INVALID_INPUT = "Please select a valid option!";
         int option;
+
         try {
             option = scanner.nextInt();
         } catch (InputMismatchException e) {
-            printStream.println("Please select a valid option!");
+            printStream.println(PROMPT_FOR_INVALID_INPUT);
             discardInputBuffer();
             return true;
         }
@@ -68,7 +70,7 @@ public class Prompt {
         if (option == 1) {
             listAllBooksWithAuthorAndPublicationYear();
         } else {
-            printStream.println("Please select a valid option!");
+            printStream.println(PROMPT_FOR_INVALID_INPUT);
         }
         return true;
     }
