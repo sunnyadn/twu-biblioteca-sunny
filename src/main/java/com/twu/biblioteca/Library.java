@@ -14,4 +14,8 @@ public class Library {
     public Book[] getBooks() {
         return books;
     }
+
+    public boolean checkOutBook(String bookTitle) {
+        return true;
+    }
 }
