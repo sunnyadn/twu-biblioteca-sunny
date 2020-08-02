@@ -137,4 +137,16 @@ public class PromptTest {
         // Assert
         assertThat(unfinished, is(false));
     }
+
+    @Test
+    public void shouldShowSuccessWhenCheckoutBook() {
+        // Arrange
+        Prompt prompt = new Prompt(printStream);
+        prompt.setInputStream(new ByteArrayInputStream("Fundamentals of Software Architecture".getBytes()));
+        // Action
+        prompt.checkOutBook();
+        // Assert
+        verify(printStream).println("Please enter book title:");
+        verify(printStream).println("Thank you! Enjoy the book");
+    }
 }

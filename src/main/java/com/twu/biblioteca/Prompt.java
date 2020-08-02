@@ -70,12 +70,14 @@ public class Prompt {
         return option;
     }
 
-    private void checkOutBook() {
+    public void checkOutBook() {
         printStream.println("Please enter book title:");
         discardInputBuffer();
         String title = scanner.nextLine();
 
-        library.checkOutBook(title);
+        if (library.checkOutBook(title)) {
+            printStream.println("Thank you! Enjoy the book");
+        }
     }
 
     public boolean askForOption() {
