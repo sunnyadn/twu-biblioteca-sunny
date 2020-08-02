@@ -125,4 +125,14 @@ public class PromptTest {
         // Assert
         assertThat(unfinished, is(true));
     }
+
+    @Test
+    public void shouldExitProgramWhenInputOption0() {
+        // Arrange
+        prompt.setInputStream(new ByteArrayInputStream("0".getBytes()));
+        // Action
+        boolean unfinished = prompt.askForOption();
+        // Assert
+        assertThat(unfinished, is(false));
+    }
 }

@@ -70,6 +70,8 @@ public class Prompt {
 
         if (option == 1) {
             listAllBooksWithAuthorAndPublicationYear();
+        } else if (option == 0) {
+            return false;
         } else {
             printStream.println(PROMPT_FOR_INVALID_INPUT);
         }
