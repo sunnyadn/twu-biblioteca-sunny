@@ -16,6 +16,13 @@ public class Library {
     }
 
     public boolean checkOutBook(String bookTitle) {
-        return true;
+        for (Book book :
+                books) {
+            if (book.getTitle().equals(bookTitle)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

@@ -15,4 +15,14 @@ public class LibraryTest {
         // Assert
         assertThat(success, is(true));
     }
+
+    @Test
+    public void shouldNotCheckedOutWhenBookDoseNotExist() {
+        // Arrange
+        Library library = new Library();
+        // Action
+        boolean success = library.checkOutBook("Fundamentals");
+        // Assert
+        assertThat(success, is(false));
+    }
 }
