@@ -49,4 +49,8 @@ public class Library {
                 .filter(Book::isAvailable)
                 .toArray(Book[]::new);
     }
+
+    public boolean returnBook(String bookTitle) {
+        return true;
+    }
 }

@@ -27,4 +27,15 @@ public class LibraryTest {
         // Assert
         assertThat(success, is(false));
     }
+
+    @Test
+    public void shouldReturnBookWhenReturnUnavailableBook() {
+        // Arrange
+        Library library = new Library();
+        library.checkOutBook("Fundamentals of Software Architecture");
+        // Action
+        boolean success = library.returnBook("Fundamentals of Software Architecture");
+        // Assert
+        assertThat(success, is(true));
+    }
 }
