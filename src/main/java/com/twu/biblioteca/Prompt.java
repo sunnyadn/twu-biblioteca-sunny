@@ -51,6 +51,7 @@ public class Prompt {
     public void showMainMenu() {
         printStream.println("\n1. List of books");
         printStream.println("2. Check-out a book");
+        printStream.println("3. Return a book");
         printStream.println("0. Exit program\n");
         printStream.println("Please Enter Your Option Number to Continue:");
     }
