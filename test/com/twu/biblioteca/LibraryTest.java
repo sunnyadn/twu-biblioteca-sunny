@@ -12,8 +12,10 @@ public class LibraryTest {
         Library library = new Library();
         // Action
         boolean success = library.checkOutBook("Fundamentals of Software Architecture");
+        boolean available = library.findBook("Fundamentals of Software Architecture").isAvailable();
         // Assert
         assertThat(success, is(true));
+        assertThat(available, is(false));
     }
 
     @Test

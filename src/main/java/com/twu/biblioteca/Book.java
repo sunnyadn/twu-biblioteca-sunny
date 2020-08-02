@@ -2,11 +2,17 @@ package com.twu.biblioteca;
 
 public class Book {
 
-    private String title;
+    private final String title;
 
-    private String author;
+    private final String author;
 
-    private int publicationYear;
+    private final int publicationYear;
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    private boolean available = true;
 
     public Book(String title, String author, int publicationYear) {
         this.title = title;
@@ -24,5 +30,9 @@ public class Book {
 
     public int getPublicationYear() {
         return publicationYear;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 }

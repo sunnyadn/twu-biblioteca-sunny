@@ -19,10 +19,22 @@ public class Library {
         for (Book book :
                 books) {
             if (book.getTitle().equals(bookTitle)) {
+                book.setAvailable(false);
                 return true;
             }
         }
 
         return false;
+    }
+
+    public Book findBook(String bookTitle) {
+        for (Book book :
+                books) {
+            if (book.getTitle().equals(bookTitle)) {
+                return book;
+            }
+        }
+
+        return null;
     }
 }
