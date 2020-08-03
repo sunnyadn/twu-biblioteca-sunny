@@ -2,8 +2,7 @@ package com.twu.biblioteca;
 
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class LibraryTest {
@@ -71,5 +70,15 @@ public class LibraryTest {
         // Assert
         assertThat(user, is(notNullValue()));
         assertThat(user.getNumber(), is("001-0002"));
+    }
+
+    @Test
+    public void shouldNotLoginWithNonExistUserNumber() {
+        // Arrange
+        Library library = new Library();
+        // Action
+        User user = library.login("001-8888", "password");
+        // Assert
+        assertThat(user, is(nullValue()));
     }
 }
