@@ -269,4 +269,18 @@ public class PromptTest {
         // Assert
         verify(printStream).println("No record");
     }
+
+    @Test
+    public void shouldShowInformation() {
+        // Arrange
+        Prompt prompt = new Prompt(printStream);
+        prompt.setInputStream(new ByteArrayInputStream("7".getBytes()));
+        prompt.getLibrary().login("001-0001", "pass");
+        // Action
+        prompt.askForOption();
+        // Assert
+        verify(printStream).println("Name: Sunny");
+        verify(printStream).println("Email: sunnyadn@foxmail.com");
+        verify(printStream).println("Phone: 12345678");
+    }
 }

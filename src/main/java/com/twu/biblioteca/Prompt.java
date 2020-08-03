@@ -6,6 +6,8 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import static org.mockito.Mockito.verify;
+
 public class Prompt {
 
     final String PROMPT_FOR_INVALID_INPUT = "Please select a valid option!";
@@ -137,6 +139,9 @@ public class Prompt {
             case 6:
                 showCheckedBooks();
                 break;
+            case 7:
+                showUserInformation();
+                break;
             case 0:
                 return false;
             default:
@@ -145,6 +150,12 @@ public class Prompt {
         }
 
         return true;
+    }
+
+    private void showUserInformation() {
+        printStream.println("Name: Sunny");
+        printStream.println("Email: sunnyadn@foxmail.com");
+        printStream.println("Phone: 12345678");
     }
 
     private void showCheckedBooks() {
