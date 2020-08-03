@@ -26,7 +26,14 @@ public class Library {
     };
 
     public User login(String number, String password) {
-        return users[0];
+        for (User user :
+                users) {
+            if (user.getNumber().equals(number)) {
+                return user;
+            }
+        }
+
+        return null;
     }
 
     public boolean checkOutBook(String bookTitle) {

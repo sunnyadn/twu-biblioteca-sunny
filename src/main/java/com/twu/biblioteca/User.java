@@ -8,4 +8,8 @@ public class User {
         this.number = number;
         this.password = password;
     }
+
+    public String getNumber() {
+        return number;
+    }
 }

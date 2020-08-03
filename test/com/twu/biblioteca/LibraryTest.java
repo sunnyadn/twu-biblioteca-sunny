@@ -67,8 +67,9 @@ public class LibraryTest {
         // Arrange
         Library library = new Library();
         // Action
-        User user = library.login("001-0001", "pass");
+        User user = library.login("001-0002", "password");
         // Assert
         assertThat(user, is(notNullValue()));
+        assertThat(user.getNumber(), is("001-0002"));
     }
 }
