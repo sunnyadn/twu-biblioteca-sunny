@@ -5,8 +5,6 @@ import java.io.PrintStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static org.mockito.Mockito.verify;
-
 public class Prompt {
 
     final String PROMPT_FOR_INVALID_INPUT = "Please select a valid option!";
@@ -52,9 +50,13 @@ public class Prompt {
     }
 
     public void listAllMovies() {
-        printStream.println("1. The Shawshank Redemption/1994/Frank Darabont/10");
-        printStream.println("2. Farewell My Concubine/1993/Kaige Chen/9");
-        printStream.println("3. Forrest Gump/1994/Robert Zemeckis/8");
+        Movie[] movies = library.getMovies();
+
+        for (int i = 0; i < movies.length; i++) {
+            Movie movie = movies[i];
+            printStream.println((i + 1) + ". " + movie.getName()
+                    + "/" + movie.getYear() + "/" + movie.getDirector() + "/" + movie.getRating());
+        }
     }
 
     public void showMainMenu() {

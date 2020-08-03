@@ -13,8 +13,18 @@ public class Library {
                     2019)
     };
 
+    private final Movie[] movies = {
+            new Movie("The Shawshank Redemption", 1994, "Frank Darabont", 10),
+            new Movie("Farewell My Concubine", 1993, "Kaige Chen", 9),
+            new Movie("Forrest Gump", 1994, "Robert Zemeckis", 8)
+    };
+
     public Book[] getBooks() {
         return books;
+    }
+
+    public Movie[] getMovies() {
+        return movies;
     }
 
     public boolean checkOutBook(String bookTitle) {
