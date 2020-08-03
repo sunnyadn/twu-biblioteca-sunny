@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 public class Library {
 
+    private User loggedUser = null;
+
     private final Book[] books = {
             new Book("Fundamentals of Software Architecture", "Mark Richards & Neal Ford",
                     2020),
@@ -30,6 +32,7 @@ public class Library {
                 users) {
             if (user.getNumber().equals(number)) {
                 if (user.passwordIs(password)) {
+                    loggedUser = user;
                     return user;
                 }
                 return null;
@@ -45,6 +48,9 @@ public class Library {
             if (book.getTitle().equals(bookTitle)) {
                 if (book.isAvailable()) {
                     book.setAvailable(false);
+                    if (loggedUser != null) {
+                        loggedUser.addCheckedBook(book);
+                    }
                     return true;
                 } else {
                     return false;
@@ -115,5 +121,13 @@ public class Library {
         }
 
         return false;
+    }
+
+    public User getLoggedUser() {
+        return loggedUser;
+    }
+
+    public void setLoggedUser(User loggedUser) {
+        this.loggedUser = loggedUser;
     }
 }

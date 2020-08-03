@@ -11,7 +11,6 @@ import java.io.PrintStream;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.mockito.ArgumentMatchers.isNotNull;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -231,10 +230,28 @@ public class PromptTest {
     @Test
     public void shouldShowNoBook() {
         // Arrange
+        Prompt prompt = new Prompt(printStream);
         prompt.setInputStream(new ByteArrayInputStream("6".getBytes()));
+        prompt.getLibrary().login("001-0001", "pass");
         // Action
         prompt.askForOption();
         // Assert
         verify(printStream).println("No record");
+    }
+
+    @Test
+    public void shouldShowUserCheckedBooks() {
+        // Arrange
+        Prompt prompt = new Prompt(printStream);
+        prompt.setInputStream(new ByteArrayInputStream("6".getBytes()));
+        prompt.getLibrary().login("001-0001", "pass");
+        prompt.getLibrary().checkOutBook("Fundamentals of Software Architecture");
+        prompt.getLibrary().checkOutBook("EDGE: Value-driven digital transformation");
+        // Action
+        prompt.askForOption();
+        // Assert
+        verify(printStream).println("1. Fundamentals of Software Architecture/Mark Richards & Neal Ford/2020");
+        verify(printStream).println("2. EDGE: Value-driven digital transformation/"
+                + "Jim Highsmith, Linda Luu & David Robinson/2019");
     }
 }

@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Prompt {
@@ -146,7 +147,16 @@ public class Prompt {
     }
 
     private void showCheckedBooks() {
-        printStream.println("No record");
+        List<Book> books = library.getLoggedUser().getCheckedBooks();
+        if (books.isEmpty()) {
+            printStream.println("No record");
+        } else {
+            for (int i = 0; i < books.size(); i++) {
+                Book book = books.get(i);
+                printStream.println((i + 1) + ". " + book.getTitle()
+                        + "/" + book.getAuthor() + "/" + book.getPublicationYear());
+            }
+        }
     }
 
     private void checkOutMovie() {
