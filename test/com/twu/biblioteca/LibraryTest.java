@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class LibraryTest {
@@ -59,5 +60,15 @@ public class LibraryTest {
         // Assert
         assertThat(success, is(true));
         assertThat(available, is(false));
+    }
+
+    @Test
+    public void shouldLogin() {
+        // Arrange
+        Library library = new Library();
+        // Action
+        User user = library.login("001-0001", "pass");
+        // Assert
+        assertThat(user, is(notNullValue()));
     }
 }

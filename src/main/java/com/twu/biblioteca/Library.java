@@ -19,6 +19,16 @@ public class Library {
             new Movie("Forrest Gump", 1994, "Robert Zemeckis", 8)
     };
 
+    private final User[] users = {
+            new User("001-0001", "pass"),
+            new User("001-0002", "password"),
+            new User("001-0003", "pass-key")
+    };
+
+    public User login(String number, String password) {
+        return users[0];
+    }
+
     public boolean checkOutBook(String bookTitle) {
         for (Book book :
                 books) {
