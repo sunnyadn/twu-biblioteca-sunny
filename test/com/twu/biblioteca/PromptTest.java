@@ -227,4 +227,14 @@ public class PromptTest {
         verify(printStream).println("2. Farewell My Concubine/1993/Kaige Chen/9");
         verify(printStream).println("3. Forrest Gump/1994/Robert Zemeckis/8");
     }
+
+    @Test
+    public void shouldShowNoBook() {
+        // Arrange
+        prompt.setInputStream(new ByteArrayInputStream("6".getBytes()));
+        // Action
+        prompt.askForOption();
+        // Assert
+        verify(printStream).println("No record");
+    }
 }

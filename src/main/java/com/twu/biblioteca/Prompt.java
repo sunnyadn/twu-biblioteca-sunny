@@ -132,6 +132,9 @@ public class Prompt {
             case 5:
                 checkOutMovie();
                 break;
+            case 6:
+                showCheckedBooks();
+                break;
             case 0:
                 return false;
             default:
@@ -140,6 +143,10 @@ public class Prompt {
         }
 
         return true;
+    }
+
+    private void showCheckedBooks() {
+        printStream.println("No record");
     }
 
     private void checkOutMovie() {
