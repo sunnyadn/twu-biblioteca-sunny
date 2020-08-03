@@ -102,19 +102,15 @@ public class Prompt {
             return true;
         }
 
-        if (option == 1) {
-            listAllBooksWithAuthorAndPublicationYear();
-        } else if (option == 2) {
-            checkOutBook();
-        } else if (option == 3) {
-            returnBook();
-        } else if (option == 4) {
-            listAllMovies();
-        } else if (option == 0) {
-            return false;
-        } else {
-            printStream.println(PROMPT_FOR_INVALID_INPUT);
+        switch (option) {
+            case 1: listAllBooksWithAuthorAndPublicationYear(); break;
+            case 2: checkOutBook(); break;
+            case 3: returnBook(); break;
+            case 4: listAllMovies(); break;
+            case 0: return false;
+            default: printStream.println(PROMPT_FOR_INVALID_INPUT); break;
         }
+
         return true;
     }
 
