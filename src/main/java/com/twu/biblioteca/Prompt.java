@@ -5,6 +5,8 @@ import java.io.PrintStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import static org.mockito.Mockito.verify;
+
 public class Prompt {
 
     final String PROMPT_FOR_INVALID_INPUT = "Please select a valid option!";
@@ -49,10 +51,17 @@ public class Prompt {
         }
     }
 
+    public void listAllMovies() {
+        printStream.println("1. The Shawshank Redemption/1994/Frank Darabont/10");
+        printStream.println("2. Farewell My Concubine/1993/Kaige Chen/9");
+        printStream.println("3. Forrest Gump/1994/Robert Zemeckis/8");
+    }
+
     public void showMainMenu() {
         printStream.println("\n1. List of books");
         printStream.println("2. Check-out a book");
         printStream.println("3. Return a book");
+        printStream.println("4. List of movies");
         printStream.println("0. Exit program\n");
         printStream.println("Please Enter Your Option Number to Continue:");
     }
@@ -99,6 +108,8 @@ public class Prompt {
             checkOutBook();
         } else if (option == 3) {
             returnBook();
+        } else if (option == 4) {
+            listAllMovies();
         } else if (option == 0) {
             return false;
         } else {

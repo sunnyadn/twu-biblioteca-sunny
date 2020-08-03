@@ -72,6 +72,7 @@ public class PromptTest {
         verify(printStream).println("\n1. List of books");
         verify(printStream).println("2. Check-out a book");
         verify(printStream).println("3. Return a book");
+        verify(printStream).println("4. List of movies");
         verify(printStream).println("0. Exit program\n");
         verify(printStream).println("Please Enter Your Option Number to Continue:");
     }
@@ -211,5 +212,17 @@ public class PromptTest {
         // Assert
         verify(printStream).println("Please enter book title:");
         verify(printStream).println("This is not a valid book to return.");
+    }
+
+    @Test
+    public void shouldListAllMoviesWhenInput4() {
+        // Arrange
+        prompt.setInputStream(new ByteArrayInputStream("4".getBytes()));
+        // Action
+        prompt.askForOption();
+        // Assert
+        verify(printStream).println("1. The Shawshank Redemption/1994/Frank Darabont/10");
+        verify(printStream).println("2. Farewell My Concubine/1993/Kaige Chen/9");
+        verify(printStream).println("3. Forrest Gump/1994/Robert Zemeckis/8");
     }
 }
