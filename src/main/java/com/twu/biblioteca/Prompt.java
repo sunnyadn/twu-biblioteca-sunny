@@ -27,6 +27,16 @@ public class Prompt {
         scanner = new Scanner(inputStream);
     }
 
+    public boolean askForLogin() {
+        printStream.println("Please enter your library number:");
+        String number = scanner.nextLine();
+        printStream.println("Please enter your password:");
+        String password = scanner.nextLine();
+
+        User user = library.login(number, password);
+        return user != null;
+    }
+
     public void printWelcomeMessage() {
         printStream.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
     }
