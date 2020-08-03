@@ -73,6 +73,7 @@ public class PromptTest {
         verify(printStream).println("2. Check-out a book");
         verify(printStream).println("3. Return a book");
         verify(printStream).println("4. List of movies");
+        verify(printStream).println("5. Check-out a movie");
         verify(printStream).println("0. Exit program\n");
         verify(printStream).println("Please Enter Your Option Number to Continue:");
     }
