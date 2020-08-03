@@ -19,14 +19,6 @@ public class Library {
             new Movie("Forrest Gump", 1994, "Robert Zemeckis", 8)
     };
 
-    public Book[] getBooks() {
-        return books;
-    }
-
-    public Movie[] getMovies() {
-        return movies;
-    }
-
     public boolean checkOutBook(String bookTitle) {
         for (Book book :
                 books) {
@@ -58,6 +50,12 @@ public class Library {
         return Arrays.stream(books)
                 .filter(Book::isAvailable)
                 .toArray(Book[]::new);
+    }
+
+    public Movie[] getAvailableMovies() {
+        return Arrays.stream(movies)
+                .filter(Movie::isAvailable)
+                .toArray(Movie[]::new);
     }
 
     public boolean returnBook(String bookTitle) {

@@ -50,7 +50,7 @@ public class Prompt {
     }
 
     public void listAllMovies() {
-        Movie[] movies = library.getMovies();
+        Movie[] movies = library.getAvailableMovies();
 
         for (int i = 0; i < movies.length; i++) {
             Movie movie = movies[i];
