@@ -18,9 +18,12 @@ public class Library {
             new Movie("Forrest Gump", 1994, "Robert Zemeckis", 8)
     };
     private final User[] users = {
-            new User("001-0001", "pass"),
-            new User("001-0002", "password"),
-            new User("001-0003", "pass-key")
+            new User("001-0001", "pass", "Sunny", "sunnyadn@foxmail.com",
+                    "12345678"),
+            new User("001-0002", "password", "Richard", "richard@thoughtworks.com",
+                    "12345679"),
+            new User("001-0003", "pass-key", "Cai", "cai@thoughtworks.com",
+                    "12345670")
     };
     private User loggedUser = null;
 

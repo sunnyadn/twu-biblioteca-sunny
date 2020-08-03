@@ -153,9 +153,10 @@ public class Prompt {
     }
 
     private void showUserInformation() {
-        printStream.println("Name: Sunny");
-        printStream.println("Email: sunnyadn@foxmail.com");
-        printStream.println("Phone: 12345678");
+        User user = library.getLoggedUser();
+        printStream.println("Name: " + user.getName());
+        printStream.println("Email: " + user.getEmail());
+        printStream.println("Phone: " + user.getPhone());
     }
 
     private void showCheckedBooks() {

@@ -283,4 +283,18 @@ public class PromptTest {
         verify(printStream).println("Email: sunnyadn@foxmail.com");
         verify(printStream).println("Phone: 12345678");
     }
+
+    @Test
+    public void shouldShowRichardInformationWhenLogged() {
+        // Arrange
+        Prompt prompt = new Prompt(printStream);
+        prompt.setInputStream(new ByteArrayInputStream("7".getBytes()));
+        prompt.getLibrary().login("001-0002", "password");
+        // Action
+        prompt.askForOption();
+        // Assert
+        verify(printStream).println("Name: Richard");
+        verify(printStream).println("Email: richard@thoughtworks.com");
+        verify(printStream).println("Phone: 12345679");
+    }
 }
