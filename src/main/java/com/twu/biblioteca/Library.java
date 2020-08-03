@@ -4,8 +4,6 @@ import java.util.Arrays;
 
 public class Library {
 
-    private User loggedUser = null;
-
     private final Book[] books = {
             new Book("Fundamentals of Software Architecture", "Mark Richards & Neal Ford",
                     2020),
@@ -14,18 +12,17 @@ public class Library {
             new Book("Digital Transformation Game Plan", "Gary O'Brien, Guo Xiao & Mike Mason",
                     2019)
     };
-
     private final Movie[] movies = {
             new Movie("The Shawshank Redemption", 1994, "Frank Darabont", 10),
             new Movie("Farewell My Concubine", 1993, "Kaige Chen", 9),
             new Movie("Forrest Gump", 1994, "Robert Zemeckis", 8)
     };
-
     private final User[] users = {
             new User("001-0001", "pass"),
             new User("001-0002", "password"),
             new User("001-0003", "pass-key")
     };
+    private User loggedUser = null;
 
     public User login(String number, String password) {
         for (User user :
@@ -130,7 +127,4 @@ public class Library {
         return loggedUser;
     }
 
-    public void setLoggedUser(User loggedUser) {
-        this.loggedUser = loggedUser;
-    }
 }
