@@ -28,4 +28,8 @@ public class User {
     public void addCheckedBook(Book book) {
         checkedBooks.add(book);
     }
+
+    public void removeCheckedBook(Book book) {
+        checkedBooks.remove(book);
+    }
 }

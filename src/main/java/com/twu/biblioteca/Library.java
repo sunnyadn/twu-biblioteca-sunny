@@ -112,6 +112,9 @@ public class Library {
                 books) {
             if (book.getTitle().equals(bookTitle)) {
                 if (!book.isAvailable()) {
+                    if (loggedUser != null) {
+                        loggedUser.removeCheckedBook(book);
+                    }
                     book.setAvailable(true);
                     return true;
                 } else {

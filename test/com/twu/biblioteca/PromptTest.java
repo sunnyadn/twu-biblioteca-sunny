@@ -254,4 +254,18 @@ public class PromptTest {
         verify(printStream).println("2. EDGE: Value-driven digital transformation/"
                 + "Jim Highsmith, Linda Luu & David Robinson/2019");
     }
+
+    @Test
+    public void shouldShowNoBookWhenReturnedBook() {
+        // Arrange
+        Prompt prompt = new Prompt(printStream);
+        prompt.setInputStream(new ByteArrayInputStream("6".getBytes()));
+        prompt.getLibrary().login("001-0001", "pass");
+        prompt.getLibrary().checkOutBook("Fundamentals of Software Architecture");
+        prompt.getLibrary().returnBook("Fundamentals of Software Architecture");
+        // Action
+        prompt.askForOption();
+        // Assert
+        verify(printStream).println("No record");
+    }
 }
