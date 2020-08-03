@@ -12,4 +12,8 @@ public class User {
     public String getNumber() {
         return number;
     }
+
+    public boolean passwordIs(String password) {
+        return this.password.equals(password);
+    }
 }

@@ -81,4 +81,14 @@ public class LibraryTest {
         // Assert
         assertThat(user, is(nullValue()));
     }
+
+    @Test
+    public void shouldNotLoginWithWrongPassword() {
+        // Arrange
+        Library library = new Library();
+        // Action
+        User user = library.login("001-0001", "wrong");
+        // Assert
+        assertThat(user, is(nullValue()));
+    }
 }

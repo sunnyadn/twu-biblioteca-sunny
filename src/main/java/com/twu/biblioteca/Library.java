@@ -29,7 +29,10 @@ public class Library {
         for (User user :
                 users) {
             if (user.getNumber().equals(number)) {
-                return user;
+                if (user.passwordIs(password)) {
+                    return user;
+                }
+                return null;
             }
         }
 
@@ -53,8 +56,8 @@ public class Library {
     }
 
     public boolean checkoutMovie(String name) {
-        for (Movie movie:
-             movies) {
+        for (Movie movie :
+                movies) {
             if (movie.getName().equals(name)) {
                 movie.setAvailable(false);
                 return true;
