@@ -35,11 +35,34 @@ public class Library {
         return false;
     }
 
+    public boolean checkoutMovie(String name) {
+        for (Movie movie:
+             movies) {
+            if (movie.getName().equals(name)) {
+                movie.setAvailable(false);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public Book findBook(String bookTitle) {
         for (Book book :
                 books) {
             if (book.getTitle().equals(bookTitle)) {
                 return book;
+            }
+        }
+
+        return null;
+    }
+
+    public Movie findMovie(String name) {
+        for (Movie movie :
+                movies) {
+            if (movie.getName().equals(name)) {
+                return movie;
             }
         }
 

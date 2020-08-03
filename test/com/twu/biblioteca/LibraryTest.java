@@ -48,4 +48,16 @@ public class LibraryTest {
         // Assert
         assertThat(success, is(false));
     }
+
+    @Test
+    public void shouldCheckedOutWhenInputExistingMovie() {
+        // Arrange
+        Library library = new Library();
+        // Action
+        boolean success = library.checkoutMovie("The Shawshank Redemption");
+        boolean available = library.findMovie("The Shawshank Redemption").isAvailable();
+        // Assert
+        assertThat(success, is(true));
+        assertThat(available, is(false));
+    }
 }

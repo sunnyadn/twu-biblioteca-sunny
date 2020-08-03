@@ -106,15 +106,37 @@ public class Prompt {
         }
 
         switch (option) {
-            case 1: listAllBooksWithAuthorAndPublicationYear(); break;
-            case 2: checkOutBook(); break;
-            case 3: returnBook(); break;
-            case 4: listAllMovies(); break;
-            case 0: return false;
-            default: printStream.println(PROMPT_FOR_INVALID_INPUT); break;
+            case 1:
+                listAllBooksWithAuthorAndPublicationYear();
+                break;
+            case 2:
+                checkOutBook();
+                break;
+            case 3:
+                returnBook();
+                break;
+            case 4:
+                listAllMovies();
+                break;
+            case 5:
+                checkOutMovie();
+                break;
+            case 0:
+                return false;
+            default:
+                printStream.println(PROMPT_FOR_INVALID_INPUT);
+                break;
         }
 
         return true;
+    }
+
+    private void checkOutMovie() {
+        printStream.println("Please enter book title:");
+        discardInputBuffer();
+        String name = scanner.nextLine();
+
+        library.checkoutMovie(name);
     }
 
     private String askForBookTitle() {
